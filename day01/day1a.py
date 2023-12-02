@@ -20,7 +20,7 @@ def lastDigit( s ):
     return firstDigit( reversed(s) )    
 
 
-file = open("data/day1a.txt", "r") 
+file = open("day01/data/day1a.txt", "r") 
 
 lines = file.readlines()
 #print( lines )

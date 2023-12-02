@@ -1,6 +1,7 @@
 # adventOfCode2023
 **Advent of Code 2023**
 
+Testing: GitHub Codespaces with Python, committing code to GithHub (ie. this repository)
 
 ## day1 - Trebuchet? (Searching Strings)
 
