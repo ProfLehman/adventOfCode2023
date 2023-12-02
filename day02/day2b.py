@@ -1,24 +1,11 @@
-# day2a.py
+# day2b.py
 # j.l. lehman
 # December 2, 2023
 # Advent of code
 #
-# AI generated description
 
-# Determines the maximum number of each color in each game
-# and adds the game number to the total if the maximums are
-# less than the maximums allowed.
-#
-# The input file is a list of games. Each game is a list of pulls.
-# Each pull is a color and a number. The color is red, green, or blue.
-# The number is between 1 and 20 inclusive.
-# The maximum number of each color is redMax, greenMax, and blueMax.
-# The maximums are 12, 13, and 14 respectively.
-# The total is the sum of the game numbers.
-
-
-#file = open("day02/day2.txt", "r") 
-file = open("day02/day2a_test.txt", "r") 
+file = open("day02/day2.txt", "r") 
+#file = open("day02/day2a_test.txt", "r") 
 
 lines = file.readlines()
 
@@ -69,9 +56,9 @@ for line in lines:
             
             #end loop
 
-    if redCount <= redMax and blueCount <= blueMax and greenCount <= greenMax:
-        print( f"Game {game}: red={redCount}, green={greenCount}, blue={blueCount} ")
-        total = total + game
+    cubePower = redCount * greenCount * blueCount   
+    print( f"Game {game}: red={redCount}, green={greenCount}, blue={blueCount}   cubePower={cubePower}")
+    total = total + cubePower
 
     game = game + 1
     #end loop
