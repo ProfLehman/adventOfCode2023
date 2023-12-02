@@ -8,13 +8,37 @@
 # add all numbers from each line and output sum
 #
 
+# find and return first digit in string
+def firstDigit( s ):
+    for digit in s:
+        if digit.isdigit():
+            return digit
+    return -1    
+
+# find and return first digit in string
+def lastDigit( s ):
+    return firstDigit( reversed(s) )    
+
+
 file = open("data/day1a.txt", "r") 
 
 lines = file.readlines()
-print( lines )
+#print( lines )
+
+total = 0
 
 for line in lines:
-    print( line.strip() )
+    line = line.strip()
+    first = firstDigit(line)
+    last = lastDigit(line)
+
+    number = int( first+last )
+    total += number
+    print( f"{line} {first} {last} {number}" )
+
+print( total )
+
+
 
 
 
