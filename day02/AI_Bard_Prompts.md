@@ -23,12 +23,12 @@ Sure! The sum of game IDs: 2
 12. This code first defines the maximum limits for each color. Then, it processes each line, extracting the color information and keeping track of the maximum counts for each color. If the line meets the maximum color limits, it is added to a list of filtered lines. Finally, the filtered lines are printed along with the maximum counts for each color.  Print the sum of the filtered lines game number.
 
 ---
-### Final Code Version - Solves Day 2 - Part I ###
+### Final Code Version - Solves Day 02 - Part I ###
+[day2a_AI.py](day2a_AI.py) day 2 solution generated completly by Google Bard AI)
 ---
-`
-Okay, here's the code with the sum of the filtered lines' game numbers printed:
 
-Python
+```
+{
 import re
 
 # Regular expression pattern to extract color information
@@ -107,6 +107,6 @@ for line in filtered_lines:
 
 # Print the sum of game IDs
 print(f"\nSum of Game IDs: {sum_game_ids}")
-Use code with caution. Learn more
-This code now keeps track of the game IDs for the filtered lines and calculates their sum after processing all lines. It then prints the sum along with the previously displayed information for each filtered line.
-`
+}
+```
+---
