@@ -23,11 +23,11 @@ committing code to GithHub (ie. this repository)
 2. Part II determine "gears" ie. "*" symbol with exactly two numbers adjacent
 3. Uses logic from game of life to check x8 surrounding tiles
 4. Uses Python class approach
-5. Uses dictionaries
+5. Uses dictionaries to store data as "sparse array" ie. only numbers and symbols are stored, blanks are not
 
 ## Day 4: Scratchcards (List processing)
 1. Part I. find numbers in my list that appear in winning list
 2. Part II. updated future counts in list calculating additional values
-3. note: key concept is to calulate future values rather than creating additional card instances throug brute force
+3. note: key concept is to calulate future values rather than creating additional card instances through brute force
 
-## day 5: ?
+## Day 5: ?
