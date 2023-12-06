@@ -3,6 +3,8 @@
 # December 5, 2023
 # Advent of code
 
+import sys #used for max int
+
 # source to desired destination
 def sourceToDestination(x, map):
     result = x
@@ -24,16 +26,19 @@ def sourceToDestination(x, map):
     return result
 # end sourceToDestination
 
-"""
-50 98 2
-52 50 48
-"""
-#seedToSoil = [[50,98,2],[52,50,48]]
-#test = 98
-#for test in range(48,101):
-#    print(test, "=>", sourceToDestination(test, seedToSoil))
-
-
+# get location
+def getLocation( s ):
+    
+    soil = sourceToDestination(s, seedToSoil)
+    fertilizer = sourceToDestination(soil, soilToFertilizer)
+    water = sourceToDestination(fertilizer, fertilizerToWater)
+    light = sourceToDestination(water, waterToLight)
+    temperature = sourceToDestination(light, lightToTemperature)
+    humidity = sourceToDestination(temperature, temperatureToHumidity)
+    location = sourceToDestination(humidity, humidityToLocation)
+    
+    return location
+    # end getLocation
 
 # build resource maps
 category = "seeds"
@@ -48,7 +53,6 @@ waterToLight = []
 lightToTemperature = []
 temperatureToHumidity = []
 humidityToLocation = []
-
 
 
 filename = "day05/input.txt"
@@ -67,66 +71,42 @@ for line in lines:
         category = line
 
     elif len(line) == 0:
-        #print("\nnew category ...")
         continue
 
     elif category == "seeds":
-        #print( category )
         temp = line.split()
         i = 1
         while i < len(temp):
             seeds.append( int(temp[i]) )
             i += 1
-        #print( seeds )
 
     elif category == "seed-to-soil map:":
-        #print( category )
         temp = line.split()
-        #print( temp )
         seedToSoil.append( [int(temp[0]), int(temp[1]), int(temp[2])] )
-        #print( seedToSoil )
 
     elif category == "soil-to-fertilizer map:":
-        #print( category )
         temp = line.split()
-        #print( temp )
         soilToFertilizer.append( [int(temp[0]), int(temp[1]), int(temp[2])] )
-        #print( soilToFertilizer )
 
     elif category == "fertilizer-to-water map:":
-        #print( category )
         temp = line.split()
-        #print( temp )
         fertilizerToWater.append( [int(temp[0]), int(temp[1]), int(temp[2])] )
-        #print( fertilizerToWater )
 
     elif category == "water-to-light map:":
-        #print( category )
         temp = line.split()
-        #print( temp )
         waterToLight.append( [int(temp[0]), int(temp[1]), int(temp[2])] )
-        #print( waterToLight )
 
     elif category == "light-to-temperature map:":
-        #print( category )
         temp = line.split()
-        #print( temp )
         lightToTemperature.append( [int(temp[0]), int(temp[1]), int(temp[2])] )
-        #print( lightToTemperature )
 
     elif category == "temperature-to-humidity map:":
-        #print( category )
         temp = line.split()
-        #print( temp )
         temperatureToHumidity.append( [int(temp[0]), int(temp[1]), int(temp[2])] )
-        #print( temperatureToHumidity )
 
     elif category == "humidity-to-location map:":
-        #print( category )
         temp = line.split()
-        #print( temp )
         humidityToLocation.append( [int(temp[0]), int(temp[1]), int(temp[2])] )
-        #print( humidityToLocation )
     else:
         print( "Error: category", category, "not found *************************" )
     
@@ -144,29 +124,25 @@ print( "humidityToLocation: ", len(humidityToLocation) )
 print()
 
 
-low = 100000000000000000
+# ---------------------------- Part A ----------------------------
+low = sys.maxsize
 
 for seed in seeds:
-    soil = sourceToDestination(seed, seedToSoil)
-    fertilizer = sourceToDestination(soil, soilToFertilizer)
-    water = sourceToDestination(fertilizer, fertilizerToWater)
-    light = sourceToDestination(water, waterToLight)
-    temperature = sourceToDestination(light, lightToTemperature)
-    humidity = sourceToDestination(temperature, temperatureToHumidity)
-    location = sourceToDestination(humidity, humidityToLocation)
-    #print( f"{seed} = > {location}") 
+    location = getLocation(seed)
 
     if location < low:
         low = location
+        
 print()
 print( "Part A Low: ", low )
 print()
 
 
 # ---------------------------- Part B ----------------------------
-low = 100000000000000000
-lowSeed = -1
+low = sys.maxsize
 
+# check seed intervals for lowest location using 25,000 increments
+lowSeed = -1
 i = 0
 while i < len(seeds):
     startNumber = seeds[i]
@@ -177,44 +153,32 @@ while i < len(seeds):
 
     j = startNumber
     while j <= stopNumber:
-        soil = sourceToDestination(j, seedToSoil)
-        fertilizer = sourceToDestination(soil, soilToFertilizer)
-        water = sourceToDestination(fertilizer, fertilizerToWater)
-        light = sourceToDestination(water, waterToLight)
-        temperature = sourceToDestination(light, lightToTemperature)
-        humidity = sourceToDestination(temperature, temperatureToHumidity)
-        location = sourceToDestination(humidity, humidityToLocation)
-        #print( f"{seed} = > {location}") 
+        
+        location = getLocation(j)
 
         if location < low:
             low = location
             lowSeed = j
             print( f"          New Low {j:,d} = > {location:,d}")
 
-        j += 250000
-
+        j += 25000
+        #end while j
+        
     i += 2
     # end while i
 
-
+# use lowest seed to search by x1
 j = lowSeed
-while j >= lowSeed - 1000000:
-    soil = sourceToDestination(j, seedToSoil)
-    fertilizer = sourceToDestination(soil, soilToFertilizer)
-    water = sourceToDestination(fertilizer, fertilizerToWater)
-    light = sourceToDestination(water, waterToLight)
-    temperature = sourceToDestination(light, lightToTemperature)
-    humidity = sourceToDestination(temperature, temperatureToHumidity)
-    location = sourceToDestination(humidity, humidityToLocation)
-    #print( f"{seed} = > {location}") 
+while j >= lowSeed - 25000:
+    location = getLocation(j)
 
     if location < low:
         low = location
-        print( f"          New Low {j:,d} = > {location:,d}")
 
     j = j - 1
-
-
+    #end while j
+    
 print()
 print( "Part B Low: ", low )
 print()  
+
