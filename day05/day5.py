@@ -154,17 +154,67 @@ for seed in seeds:
     temperature = sourceToDestination(light, lightToTemperature)
     humidity = sourceToDestination(temperature, temperatureToHumidity)
     location = sourceToDestination(humidity, humidityToLocation)
-    print( f"{seed} = > {location}") 
+    #print( f"{seed} = > {location}") 
 
     if location < low:
         low = location
-
+print()
 print( "Part A Low: ", low )
+print()
 
 
+# ---------------------------- Part B ----------------------------
+low = 100000000000000000
+lowSeed = -1
+
+i = 0
+while i < len(seeds):
+    startNumber = seeds[i]
+    numberNeeded = seeds[i+1]
+    stopNumber = startNumber + numberNeeded - 1 
+
+    print( f"{startNumber:15d} to {stopNumber:15d} {numberNeeded:15,d}")
+
+    j = startNumber
+    while j <= stopNumber:
+        soil = sourceToDestination(j, seedToSoil)
+        fertilizer = sourceToDestination(soil, soilToFertilizer)
+        water = sourceToDestination(fertilizer, fertilizerToWater)
+        light = sourceToDestination(water, waterToLight)
+        temperature = sourceToDestination(light, lightToTemperature)
+        humidity = sourceToDestination(temperature, temperatureToHumidity)
+        location = sourceToDestination(humidity, humidityToLocation)
+        #print( f"{seed} = > {location}") 
+
+        if location < low:
+            low = location
+            lowSeed = j
+            print( f"          New Low {j:,d} = > {location:,d}")
+
+        j += 250000
+
+    i += 2
+    # end while i
 
 
-    
+j = lowSeed
+while j >= lowSeed - 1000000:
+    soil = sourceToDestination(j, seedToSoil)
+    fertilizer = sourceToDestination(soil, soilToFertilizer)
+    water = sourceToDestination(fertilizer, fertilizerToWater)
+    light = sourceToDestination(water, waterToLight)
+    temperature = sourceToDestination(light, lightToTemperature)
+    humidity = sourceToDestination(temperature, temperatureToHumidity)
+    location = sourceToDestination(humidity, humidityToLocation)
+    #print( f"{seed} = > {location}") 
+
+    if location < low:
+        low = location
+        print( f"          New Low {j:,d} = > {location:,d}")
+
+    j = j - 1
 
 
-
+print()
+print( "Part B Low: ", low )
+print()  
