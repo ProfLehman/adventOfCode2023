@@ -6,7 +6,6 @@ Testing: GitHub Codespaces with Python,
 committing code to GithHub (ie. this repository)
 
 ## Day 1: Trebuchet (Searching Strings)
-
 1. Part I search for first and last occurance of digit 1, 2, 3, ... 9 in string
 2. Part II extends search to include digit names "one", "two", etc.
 3. Note: "gotcha" must account for overlapping digit names ie. twoone => 21
@@ -30,4 +29,11 @@ committing code to GithHub (ie. this repository)
 2. Part II. updated future counts in list calculating additional values
 3. note: key concept is to calulate future values rather than creating additional card instances through brute force
 
-## Day 5: ?
+## Day 5: If You Give A Seed A Fertilizer (Functions, Number Ranges, Search Intervals)
+1. Part I. Mapped number ranges storing in lists, Functions to determine location and lowest location
+2. Part II. Too many numbers to check brute-force, used intervals of 25,000 to narrow search
+3. note: key concept is not to store all test values in list, rather process ranges
+  
+## Day 6: 
+
+
