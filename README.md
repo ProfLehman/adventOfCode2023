@@ -34,6 +34,18 @@ committing code to GithHub (ie. this repository)
 2. Part II. Too many numbers to check brute-force, used intervals of 25,000 to narrow search
 3. note: key concept is not to store all test values in list, rather process ranges
   
-## Day 6: 
+## Day 6: Wait For It (While loop, max value)
+1. Part I. Determined how long to hold buton to advance boat
+2. Part II. Sample proble longer race
+3. note: key insight, eliminated inner loop by calculating output,
+spent time fully understanding sample data
+
+## Day 7: Camel Cards (Strings sorting, comparing, looking for patterns)
+1. Part I. Determined poker hand values, sorted by values
+2. Part II. Determiend poker hand values with Jokes wild
+3. note: likely better approach such as card frequencies and looking for signature
+of counts ie. 3 2 for fullhouse, 2 2 for two pair etc...
+
+## Day 8:
 
 

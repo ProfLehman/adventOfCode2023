@@ -1,4 +1,8 @@
-file = open("day07/test.txt", "r") 
+# day7.py
+# Advent of Code Day 7
+# December 7th, 2023
+
+file = open("day07/input.txt", "r") 
 
 hands = []
 bids = []
@@ -8,69 +12,114 @@ for line in file:
     hands.append(str)
     bids.append(int(num))
 
-print( hands )
-print( bids )
+#print( hands )
+#print( bids )
 
+def countJ( h ):
+    count = 0
+    for i in range(0,5):
+        if h[i] == 'J':
+            count += 1
+    return count
 
-# Part A
-#def equal( a, b):
-#    return a == b
-
-# Part B
-def eq( a, b):
-    if a == b or a == "J" or b == "J":
-        return True
-    else:
-        return False
 
 def handValue( h ):
     value = -1
 
-    h = sorted(h)
+    h = "".join(sorted(h))
 
     #five of a kind
-    #if h[0] == h[1] == h[2] == h[3] == h[4]:
-    if eq(h[0], h[1]) and eq(h[1], h[2]) and eq(h[2], h[3]) and eq(h[3], h[4]):
+    if h[0] == h[1] == h[2] == h[3] == h[4]:
         value = 7
 
     #four of a kind
-    #elif h[0] == h[1] == h[2] == h[3] or h[1] == h[2] == h[3] == h[4]:
-    elif eq(h[0], h[1]) and eq(h[1], h[2]) and eq(h[2], h[3]) or eq(h[1], h[2]) and eq(h[2], h[3]) and eq(h[3], h[4]):
+    elif h[0] == h[1] == h[2] == h[3] or h[1] == h[2] == h[3] == h[4]:
         value = 6   
-
+ 
     #full house
-    #elif h[0] == h[1] == h[2] and h[3] == h[4] or h[0] == h[1] and h[2] == h[3] == h[4]:
-    elif eq(h[0], h[1]) and eq(h[1], h[2]) and eq(h[3], h[4]) or eq(h[0], h[1]) and eq(h[2], h[3]) and eq(h[3], h[4]):
+    elif h[0] == h[1] == h[2] and h[3] == h[4] or h[0] == h[1] and h[2] == h[3] == h[4]:
         value = 5
 
     #three of a kind
-    #elif h[0] == h[1] == h[2] or h[1] == h[2] == h[3] or h[2] == h[3] == h[4]:
-    elif eq(h[0], h[1]) and eq(h[1], h[2]) or eq(h[1], h[2]) and eq(h[2], h[3]) or eq(h[2], h[3]) and eq(h[3], h[4]):
+    elif h[0] == h[1] == h[2] or h[1] == h[2] == h[3] or h[2] == h[3] == h[4]:
         value = 4
 
     #two pairs
-    #elif h[0] == h[1] and h[2] == h[3] or h[0] == h[1] and h[3] == h[4] or h[1] == h[2] and h[3] == h[4]:
-    elif eq(h[0], h[1]) and eq(h[2], h[3]) or eq(h[0], h[1]) and eq(h[3], h[4]) or eq(h[1], h[2]) and eq(h[3], h[4]):
+    elif h[0] == h[1] and h[2] == h[3] or h[0] == h[1] and h[3] == h[4] or h[1] == h[2] and h[3] == h[4]:
         value = 3
 
     #one pair
-    #elif h[0] == h[1] or h[1] == h[2] or h[2] == h[3] or h[3] == h[4]:
-    elif eq(h[0], h[1]) or eq(h[1], h[2]) or eq(h[2], h[3]) or eq(h[3], h[4]):
+    elif h[0] == h[1] or h[1] == h[2] or h[2] == h[3] or h[3] == h[4]:
         value = 2
 
     #high card
     else:
         value = 1
 
+
+    #Part B - check jokers
+    numJ = countJ(h)
+
+    if numJ == 5: #four jokers - five of a kind
+        value = 7
+    elif numJ == 4: #four jokers - five of a kind
+        value = 7
+    elif numJ == 3: 
+        h = h.replace("J", "")
+        if h[0] == h[1]:
+            value = 7 #five of a kind
+        elif h[0] != h[1]:
+            value = 6 #four of a kind
+        else:
+            print("Error with three joker values: ", h)
+            value = -1
+
+    elif numJ == 2: #two jokers
+        h = h.replace("J", "")
+        
+        if h[0] == h[1] == h[2]: # five of a kind
+            value = 7
+        elif h[0] == h[1] or h[1] == h[2] or [0]== h[2]: # four of a kind
+            value = 6
+        elif h[0] != h[1] and h[1] != h[2]:
+            value = 4 # three of a kind
+        else:
+            print("Error with two joker values: ", h)
+            value = -1
+
+    elif numJ == 1:
+        h = h.replace("J", "")
+        
+        if h[0] == h[1] == h[2] == h[3]: #five of a kind
+            value = 7 
+        elif h[0] == h[1] == h[2] or h[0] == h[1] == h[3]: #four of a kind 
+            value = 6
+        elif h[0] == h[2] == h[3] or h[1] == h[2] == h[3]: #four of a kind 
+            value = 6
+        elif h[0] == h[1] and h[2] == h[3] or h[0] == h[2] and h[1] == h[3] or h[0] == h[3] and h[1] == h[2]:
+            value = 5 #full house
+        elif h[0] == h[1] or h[1] == h[2] or h[2] == h[3] or h[0] == h[2] or h[1] == h[3] or h[0] == h[3]:
+            value = 4 #three of a kind
+        elif h[0] != h[1] and h[1] != h[2] and h[2] != h[3]:
+            value = 2
+        else:
+            print("Error with one joker value: ", h)
+            value = -1
+    elif numJ == 0:
+        value = value
+    else:
+        print("Error with jokers: ", h)
+
     return value
+
 
 def compareHands( h1, h2 ):
 
     #Part A
-    values = "23456789TJQKA"
+    #values = "23456789TJQKA"
 
     #Part B
-    #values = "J23456789TQKA"
+    values = "J23456789TQKA"
 
     if handValue(h1) < handValue(h2):
         return True
@@ -98,24 +147,18 @@ while p < len(hands):
 
     p = i + 1
 
-print( hands )
-print( bids  )
+#print( hands )
+#print( bids  )
 print()
 
 # add up winnings
 winnings = 0
 m = 1
 for b in bids:
- winnings = winnings + (b*m)
- m = m + 1
+    winnings = winnings + (b*m)
+    m = m + 1
 
 
-print( "Part A. winnings: ", winnings )
-
-
-print()
-for hand in hands:
-    print( hand, handValue(hand) )
-    print() 
+print( "Winnings: ", winnings )
 
 
