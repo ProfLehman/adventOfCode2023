@@ -50,6 +50,10 @@ of counts ie. 3 2 for fullhouse, 2 2 for two pair etc...
 1. Part I. Create graph using dictionary for node => left, node => right
 2. Part II. Determine cycles for when each node visited node ending in Z, then use least common multiple feature of Wolfram Alpha (then Python to automate, thanks CoPilot!) to automate answer
 
-## 
+## Day 9: Mirage Maintenance (List)
+1. Part I. Loop through list adding differences until all are zero
+2. Part II. Minor adjustment to calculations
+3. note: detail plan before coding understanding examples and writing algorithm was essential
+4. note: list is passed by reference, made copy of list to allow both parts to be solved in one pass
 
 
