@@ -5,6 +5,8 @@
 Testing: GitHub Codespaces with Python, 
 committing code to GithHub (ie. this repository)
 
+Note: Individual input files are removed.Test examples posted for all users on AOC site included
+
 ## Day 1: Trebuchet (Searching Strings)
 1. Part I search for first and last occurance of digit 1, 2, 3, ... 9 in string
 2. Part II extends search to include digit names "one", "two", etc.
