@@ -42,10 +42,14 @@ spent time fully understanding sample data
 
 ## Day 7: Camel Cards (Strings sorting, comparing, looking for patterns)
 1. Part I. Determined poker hand values, sorted by values
-2. Part II. Determiend poker hand values with Jokes wild
+2. Part II. Determined poker hand values with Jokes wild
 3. note: likely better approach such as card frequencies and looking for signature
 of counts ie. 3 2 for fullhouse, 2 2 for two pair etc...
 
-## Day 8:
+## Day 8: Haunted Wasteland (Graph, Dictionary, Least Common Multiple)
+1. Part I. Create graph using dictionary for node => left, node => right
+2. Part II. Determine cycles for when each node visited node ending in Z, then use least common multiple feature of Wolfram Alpha (then Python to automate, thanks CoPilot!) to automate answer
+
+## 
 
 
