@@ -56,4 +56,9 @@ of counts ie. 3 2 for fullhouse, 2 2 for two pair etc...
 3. note: detail plan before coding understanding examples and writing algorithm was essential
 4. note: list is passed by reference, made copy of list to allow both parts to be solved in one pass
 
+## Day 10: Pipe Maze (floodfill, zooming in on grid)
+1. Part I. Read grid and follow path that is a loop counting steps
+2. Part II. Determine tiles enclosed by path
+
+
 
