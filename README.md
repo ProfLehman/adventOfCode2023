@@ -62,5 +62,10 @@ of counts ie. 3 2 for fullhouse, 2 2 for two pair etc...
 1. Part I. Read grid and follow path that is a loop counting steps
 2. Part II. Determine tiles enclosed by path
 
+## Day 16: The Floor Will Be Lava (Grid Processing, check for cycles)
+1. Part I. Read grid and follow path adding beams for splits and stopping when path visited
+2. Part II. Determine max reusing Part I starting at all entry points
+
+
 
 

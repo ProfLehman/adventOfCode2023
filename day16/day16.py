@@ -25,26 +25,28 @@ max_col = max(int(key.split(',')[1]) for key in grid)
 print("Number of items in grid:", len(grid))
 print("max row and col (acutal last index)", max_row, max_col)
 
+"""
 # Print the grid
 for row in range(max_row + 1):
     for col in range(max_col + 1):
         print(grid.get(f"{row},{col}", ' '), end="")
     print()
 print()
+"""
 
 def onGrid(row, col):
     return row >= 0 and row <= max_row and col >= 0 and col <= max_col
 
 # Part 1
-def shineBeams():
+def shineBeams( start ):
     energized = {}
     path = {}
 
     # start with the first beam
-    beams = [ [0,0,"E"] ]
+    beams = [ start ]
 
     while len(beams) > 0:
-        print( "Number of beams:", len(beams) )
+        #print( "Number of beams:", len(beams) )
 
         # get the next beam
         beam = beams.pop(0)
@@ -137,6 +139,7 @@ def shineBeams():
     # end while len(beams) > 0
 
     # Print the energized
+                        """
     for row in range(max_row + 1):
         for col in range(max_col + 1):
             if f"{row},{col}" in energized:
@@ -145,10 +148,35 @@ def shineBeams():
                 print(".", end="")
         print()
     print()
-
+    """
+                        
     return len(energized)
     # end function shineBeams()
 
 
-# *********************** Part 1 **********************
-print( shineBeams() )
+# *********************** Main **********************
+
+print( "Part 1.", shineBeams([0,0,"E"]) )
+
+max = -1
+for c in range(max_col + 1):
+    value = shineBeams([0,c,"S"])
+    if value > max:
+        max = value
+
+    value = shineBeams([max_row,c,"N"])
+    if value > max:
+        max = value
+
+print( "done top bottom", max )
+
+for r in range(max_row + 1):
+    value = shineBeams([r,0,"E"])
+    if value > max:
+        max = value
+
+    value = shineBeams([r,max_col,"W"])
+    if value > max:
+        max = value
+
+print( "Part 2.", max )
