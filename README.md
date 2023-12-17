@@ -62,10 +62,16 @@ of counts ie. 3 2 for fullhouse, 2 2 for two pair etc...
 1. Part I. Read grid and follow path that is a loop counting steps
 2. Part II. Determine tiles enclosed by path
 
+## Day 11: Cosmic Expansion (itertools for combinations, deep copy of list)
+1. Part I. Store graph nodes and calculate Hamming distances between all nodes, expanded grid by inserting rows and columns
+2. Part II. Updated distances for nodes rather than inserting rows and columns 
+
+## To Do - Day 12, 13, 14, 15
+
 ## Day 16: The Floor Will Be Lava (Grid Processing, check for cycles)
 1. Part I. Read grid and follow path adding beams for splits and stopping when path visited
 2. Part II. Determine max reusing Part I starting at all entry points
 
-
+ 
 
 
